@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% extends 'base.html' %} {% block content %}
+    <h1>Taks</h1>
+
+    <ul>
+      {% for task in tasks %}
+      <a href="{% url 'task_detail' task.id %}">
+        <li>{{task.title}}</li> 
+      </a>
+      <p><strong>Descripcion: </strong>{{task.description}}</p>
+        <p><strong>Autor: </strong>{{task.user.username}}</p>
+        <p><strong>Importante: </strong>{{task.important}}</p>
+
+      {% endfor %}
+    </ul>
+
+    {% endblock %}
+  </body>
+</html>
